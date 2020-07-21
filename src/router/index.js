@@ -149,3 +149,31 @@ export function resetRouter() {
 }
 
 export default router
+const generateRouterMap = [
+{
+     path: '/guanggao',
+     redirect: '/guanggao/bisTask/list',
+     component: Layout,
+     name: 'guanggao',
+     meta: { title: '广告管理', icon: 'el-icon-video-camera-solid', permission: ['guanggao'] },
+     children: [
+       
+       {
+         path: 'bisTask/list',
+         name: 'bisTaskList',
+         component: () => import('@/views/guanggao/bisTask/list'),
+         meta: { title: '任务管理', keepAlive: true, permission: ['BisTask'] }
+       }
+      
+,
+       {
+         path: 'bisTaskStep/list',
+         name: 'bisTaskStepList',
+         component: () => import('@/views/guanggao/bisTaskStep/list'),
+         meta: { title: '任务步骤表管理', keepAlive: true, permission: ['BisTaskStep'] }
+       }
+      
+     ]
+    }
+]
+asyncRoutes.splice(0, 0, ...generateRouterMap)
